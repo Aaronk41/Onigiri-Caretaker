@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onigiri Caretaker</title>
+  <style>
+    body {
+      background: #fffaf0;
+      font-family: "Arial Rounded MT Bold", sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #onigiri {
+      width: 150px;
+      transition: transform 0.2s;
+    }
+    .btn {
+      background-color: #ffd9e6;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 12px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    #status {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍙 Take Care of Your Onigiri!</h1>
+  <img id="onigiri" src="images/regular.png" alt="Onigiri Character" />
+  <div>
+    <button class="btn" onclick="feedOnigiri()">🍙 Feed</button>
+    <button class="btn" onclick="playWithOnigiri()">🎮 Play</button>
+    <button class="btn" onclick="putToSleep()">😴 Sleep</button>
+  </div>
+  <div id="status">Your onigiri is waiting...</div>
+
+  <script>
+    let mood = "neutral";
+
+    function updateStatus(message, transform = "none", imgSrc = "images/regular.png") {
+      document.getElementById("status").innerText = message;
+      const onigiri = document.getElementById("onigiri");
+      onigiri.style.transform = transform;
+      onigiri.src = imgSrc;
+    }
+
+    function playWithOnigiri() {
+      mood = "happy";
+      updateStatus("Yum! おいしい～ 🍙", "scale(1.1)", "images/happy.png");
+    }
+
+    function feedOnigiri() {
+      mood = "excited";
+      updateStatus("Yay! That was fun! 🎮", "rotate(10deg)", "images/hungry.png");
+    }
+
+    function putToSleep() {
+      mood = "sleepy";
+      updateStatus("Zzz... おやすみなさい 😴", "scale(0.9)", "images/sleeping.png");
+    }
+  </script>
+</body>
+</html>
